@@ -1,48 +1,48 @@
 [
 {
-	"uri": "//localhost:1313/",
+	"uri": "/",
 	"title": "Getting to know AWS Config",
 	"tags": [],
 	"description": "",
-	"content": "Building a Simple AWS CloudTrail Data Analytics Solution Overview In this lab, we will go through the basic setup of Config service to see its capabilities in helping user to monitor and manage the services.\nContent Setting up AWS Config Working with AWS Config via CLI Checking S3 bucket Resources Clean Up "
+	"content": "Getting to know AWS Config Overview In this lab, we will go through the basic setup of Config service to see its capabilities in helping user to monitor and manage the services.\nContent Setting up AWS Config Working with AWS Config via CLI Checking S3 bucket Resources Clean Up "
 },
 {
-	"uri": "//localhost:1313/1-setting-up-aws-config/",
+	"uri": "/1-setting-up-aws-config/",
 	"title": "Setting up AWS Config",
 	"tags": [],
 	"description": "",
 	"content": "After singing in to the console, search for Config, then navigate to AWS Config\nIn the AWS Config dashboard page, click Get started\nIn the Recoding method panel -\u0026gt; Recoding strategy -\u0026gt; Choose Specific resource types In the Data governance -\u0026gt; Choose Create AWS Config service-linked role\nIn the Delivery method\nChoose Create a bucket Leave the S3 Bucket name field as default, AWS will help you create a new bucket in S3 services. We will use this name to make the \u0026ldquo;skeleton\u0026rdquo; for our configuration. Check the box \u0026ldquo;Stream configuration changes and notifications to an Amazon SNS topic\u0026rdquo; Choose Create a topic Specify the SNS topic name awsconfig-lab Choose Next In some cases, you can use the AWS Managed Rules to fit your business needs. In this lab, leave it as default, scroll down and click Next.\nReview and click Confirm.\n"
 },
 {
-	"uri": "//localhost:1313/2-utilize-aws-cli/",
+	"uri": "/2-utilize-aws-cli/",
 	"title": "Working with AWS Config via CLI",
 	"tags": [],
 	"description": "",
 	"content": "Open Terminal on your own device, with AWS CLI v2 installed. Execute these commands:\nmkdir aws-config-lab: create a new foler. cd aws-config-lab: change directory to aws-config-lab. type aws configure: config your aws cli with your access and secret key (you can create one if you haven\u0026rsquo;t had yet in IAM Users). To verify that your configuration recorder has the settings that you want:\naws configservice describe-configuration-recorders --region YOUR-REGION-CODE\nCheck File delivery status. Mind the configHistoryDeliveryInfo (Enabled when you set up the configuration recorder.) \u0026amp; configSnapshotDeliveryInfo\naws configservice describe-delivery-channel-status --region YOUR-REGION-CODE\nWe will use AWS CLI put-delivery-channel to enable configuration snapshot.\nFirst, create “skeleton” file deliveryChannel.json . Here we configure the frequency 1 hour\nNote: Please create the file deliveryChannel.json in the aws-config-lab folder { \u0026#34;name\u0026#34;: \u0026#34;default\u0026#34;, \u0026#34;s3BucketName\u0026#34;: \u0026#34;YOUR-S3-BUCKET-NAME\u0026#34;, \u0026#34;snsTopicARN\u0026#34;: \u0026#34;YOUR-SNS-TOPIC-ARN\u0026#34;, \u0026#34;configSnapshotDeliveryProperties\u0026#34;: { \u0026#34;deliveryFrequency\u0026#34;: \u0026#34;One_Hour\u0026#34; } } Note: Remember to save the file before execute the next command line.\nNow, open your terminal again and execute the command put-delivery-channel. A successul command results in nothing\naws configservice put-delivery-channel --delivery-channel file://deliveryChannel.json --region YOUR-REGION-CODE\nTo view the configuration of channel, execute:\naws configservice describe-delivery-channels --region YOUR-REGION-CODE\nAgain, describe-delivery-channel-status will see new thing of configSnapshotDeliveryInfo\naws configservice describe-delivery-channel-status --region YOUR-REGION-CODE\nIf we want to configure Config-Snapshot on-demand instead of waiting for next period of update, use AWS CLI deliver-config-snapshot\naws configservice deliver-config-snapshot --delivery-channel-name default --region YOUR-REGION-CODE\nVerify again by CLI, as well as check new object on S3 bucket\naws configservice describe-delivery-channel-status --region YOUR-REGION-CODE\n"
 },
 {
-	"uri": "//localhost:1313/3-check-s3-bucket/",
+	"uri": "/3-check-s3-bucket/",
 	"title": "Checking S3 bucket",
 	"tags": [],
 	"description": "",
 	"content": "Navigate to your S3 buckets and keep choosing your bucket according to this hierarchy:\nOpen the json file you\u0026rsquo;ve just downloaded, type Ctrl + F and type AWS::EC2::Instance, you can see a part of record of EC2 instance\n"
 },
 {
-	"uri": "//localhost:1313/4-clean-up/",
+	"uri": "/4-clean-up/",
 	"title": "Clean up resources",
 	"tags": [],
 	"description": "",
 	"content": "Congratulations! So we\u0026rsquo;ve been through this lab together. To avoid additional cost, let\u0026rsquo;s clean up our resources.\nClean up Config Recorder First, navigate to the Recorder page\nChoose Edit Click Enable recording to disable it, then choose Confirm Choose OK Clean up S3 Bucket Navigate to the S3 bucket, choose the bucket -\u0026gt; choose Empty Fill in the input field -\u0026gt; Click Empty In the details page, choose Exit Again, choose the Bucket, choose Delete Fill the input field, and click Delete bucket Well done! We did a lot of stuff, glad to be by your side on your cloud journey!\n"
 },
 {
-	"uri": "//localhost:1313/categories/",
+	"uri": "/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "//localhost:1313/tags/",
+	"uri": "/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",

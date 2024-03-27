@@ -5,7 +5,7 @@ weight : 1
 chapter : false
 ---
 
-# Building a Simple AWS CloudTrail Data Analytics Solution
+# Getting to know AWS Config
 
 #### Overview
 
