@@ -9,24 +9,24 @@
 
     <link rel="icon" href="//localhost:1313/images/favicon.png" type="image/png">
 
-    <title>Building a Simple AWS CloudTrail Data Analytics Solution :: Start with Amazon VPC and AWS VPN Site-to-Site.</title>
+    <title>Getting to know AWS Config :: Start with Amazon VPC and AWS VPN Site-to-Site.</title>
 
     
-    <link href="//localhost:1313/css/nucleus.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/fontawesome-all.min.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/hybrid.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/featherlight.min.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/auto-complete.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/theme.css?1711532395" rel="stylesheet">
-    <link href="//localhost:1313/css/hugo-theme.css?1711532395" rel="stylesheet">
+    <link href="//localhost:1313/css/nucleus.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/fontawesome-all.min.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/hybrid.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/featherlight.min.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/perfect-scrollbar.min.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/auto-complete.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/atom-one-dark-reasonable.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/theme.css?1711533507" rel="stylesheet">
+    <link href="//localhost:1313/css/hugo-theme.css?1711533507" rel="stylesheet">
     
-    <link href="//localhost:1313/css/theme-workshop.css?1711532395" rel="stylesheet">
+    <link href="//localhost:1313/css/theme-workshop.css?1711533507" rel="stylesheet">
     
     
 
-    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1711532395"></script>
+    <script src="//localhost:1313/js/jquery-3.3.1.min.js?1711533507"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1711532395"></script>
-<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1711532395"></script>
+<script type="text/javascript" src="//localhost:1313/js/lunr.min.js?1711533507"></script>
+<script type="text/javascript" src="//localhost:1313/js/auto-complete.js?1711533507"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="//localhost:1313/js/search.js?1711532395"></script>
+<script type="text/javascript" src="//localhost:1313/js/search.js?1711533507"></script>
 
     
   </div>
@@ -269,18 +269,19 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>26-11-2023</font></i>
+        <i><font color=orange>3/27/2024</font></i>
     </left>
     <left>
         <br>
         <br>
-            <b> Team </b> <br>
+            <b> Made with luv </b> <br>
+            <i> <a href="https://www.linkedin.com/in/lam-hoang-cat-vy"  style="color:orange">Lam Hoang Cat Vy (Kathy Lam) </a> <br></i>
+            <b> From team FCJ Team </b> <br>
             <i> <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
         </i>
         </left>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-
     </section>
   </div>
 </nav>
@@ -308,11 +309,7 @@
  
 <h1 id="building-a-simple-aws-cloudtrail-data-analytics-solution">Building a Simple AWS CloudTrail Data Analytics Solution</h1>
 <h4 id="overview">Overview</h4>
-<p>The demo will show how you can visualize AWS CloudTrail data in Amazon QuickSight and start building simple security dashboards. Although CloudTrail is enabled by default in every AWS Account, Kathy (me) will configure a new trail, and also to show where CloudTrail configurations are made.</p>
-<p>After configuring a new trail, I will add a new user into my AWS account (named dude-from-nowhere). I will then log in as that user and do some activity that simulates a user who is issuing application programming interface (API) calls. One of these API calls will (accidentally) turn off a web server. If you want to follow the exact instructions in your account, you can mimic the scenario that I has in this account before you enable CloudTrail. To do so, you can create an Amazon Elastic Compute Cloud (Amazon EC2) instance to function as the web server.</p>
-<p>After I turns off the web server as the user <code>dude-from-nowhere</code>, I will log out and log in again as an administrator. I will then use CloudTrail data to investigate what happened by getting information, such as when the server was turned off. I will also discover the other API calls that the nicholas user made, because that account could have been compromised.</p>
-<p>Here is the reference architect for this lab
-<img alt="architect" src="//localhost:1313/images/architect/lab-cloudtrail-architect.png"></p>
+<p>In this lab, we will go through the basic setup of Config service to see its capabilities in helping user to monitor and manage the services.</p>
 <h4 id="content">Content</h4>
 <ol>
 <li><a href="//localhost:1313/1-setting-up-aws-config/">Setting up AWS Config</a></li>
@@ -435,19 +432,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="//localhost:1313/js/clipboard.min.js?1711532395"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1711532395"></script>
-    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1711532395"></script>
-    <script src="//localhost:1313/js/jquery.sticky.js?1711532395"></script>
-    <script src="//localhost:1313/js/featherlight.min.js?1711532395"></script>
-    <script src="//localhost:1313/js/highlight.pack.js?1711532395"></script>
+    <script src="//localhost:1313/js/clipboard.min.js?1711533507"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.min.js?1711533507"></script>
+    <script src="//localhost:1313/js/perfect-scrollbar.jquery.min.js?1711533507"></script>
+    <script src="//localhost:1313/js/jquery.sticky.js?1711533507"></script>
+    <script src="//localhost:1313/js/featherlight.min.js?1711533507"></script>
+    <script src="//localhost:1313/js/highlight.pack.js?1711533507"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1711532395"></script>
-    <script src="//localhost:1313/js/learn.js?1711532395"></script>
-    <script src="//localhost:1313/js/hugo-learn.js?1711532395"></script>
+    <script src="//localhost:1313/js/modernizr.custom-3.6.0.js?1711533507"></script>
+    <script src="//localhost:1313/js/learn.js?1711533507"></script>
+    <script src="//localhost:1313/js/hugo-learn.js?1711533507"></script>
 
-    <link href="//localhost:1313/mermaid/mermaid.css?1711532395" rel="stylesheet" />
-    <script src="//localhost:1313/mermaid/mermaid.js?1711532395"></script>
+    <link href="//localhost:1313/mermaid/mermaid.css?1711533507" rel="stylesheet" />
+    <script src="//localhost:1313/mermaid/mermaid.js?1711533507"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
